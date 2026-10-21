@@ -2,10 +2,8 @@
 #include <fstream>
 #include <cmath>
 
-// Конструктор
 BMPImage::BMPImage() : width(0), height(0), bitDepth(24) {}
 
-// Реализация метода загрузки
 bool BMPImage::load(const std::string& filename) {
     std::ifstream file(filename, std::ios::binary);
     if (!file) {
@@ -71,7 +69,6 @@ bool BMPImage::load(const std::string& filename) {
     return true;
 }
 
-// Реализация метода сохранения
 bool BMPImage::save(const std::string& filename) {
     std::ofstream file(filename, std::ios::binary);
     if (!file) {

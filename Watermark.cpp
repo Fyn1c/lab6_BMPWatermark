@@ -1,10 +1,11 @@
 #include "Watermark.h"
 #include <stdexcept>
+#include <cstdint>
 
 //функция смешения 1 цвета 
-static uint8_t ColorMix(uint8_t orig, uint8_t mark, double alpha) {
+static std::uint8_t ColorMix(std::uint8_t orig, std::uint8_t mark, double alpha) {
     double value = orig * (1.0 - alpha) + mark * alpha;
-    return (uint8_t)(value + 0.5);
+    return (std::uint8_t)(value + 0.5);
 }
 
 //функция смешения 2 пикселей

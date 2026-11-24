@@ -5,4 +5,4 @@
 Pixel BlendPixel(const Pixel& orig, const Pixel& mark, double alpha);
 
 // наложение вотермарки
-BMPImage WatermarkMake(BMPImage base, BMPImage& mark, double alpha = 0.4);
+BMPImage WatermarkMake(BMPImage& base, BMPImage& mark, double alpha = 0.4);

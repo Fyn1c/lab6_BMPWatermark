@@ -18,7 +18,7 @@ Pixel BlendPixel(const Pixel& orig, const Pixel& mark, double alpha) {
 }
 
 // наложение вотермакрки на файл
-BMPImage WatermarkMake(BMPImage base, BMPImage& mark, double alpha) {
+BMPImage WatermarkMake(BMPImage& base, BMPImage& mark, double alpha) {
     if (alpha < 0.0 || alpha > 1.0) {
         throw std::invalid_argument("alpha must be in range [0;1]");
     }

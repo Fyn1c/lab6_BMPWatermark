@@ -3,4 +3,4 @@ SET(CMAKE_CXX_STANDARD 23)
 
 project(BMPWatermark LANGUAGES CXX)
 
-add_executable(${PROJECT_NAME} ./main.cpp)
+add_executable(${PROJECT_NAME} main.cpp ImageBMP.cpp Watermark.cpp)

@@ -1,0 +1,48 @@
+name: C++ BMP Watermark CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      - name: Build project
+        run: |
+          cmake -B build 
+          cmake --build build
+
+
+      - name: Run BMPWatermark
+        run: |
+          mkdir -p ./test_output
+          ./build/BMPWatermark ./test_input/test.bmp ./test_mark/mark.bmp ./test_output/test.bmp
+
+      - name: Verify output image
+        run: |
+          if [ ! -f "./test_output/test.bmp" ]; then
+            echo "Ошибка: выходной файл не был создан!"
+            exit 1
+          fi
+
+          cmp -s ./test_output/test.bmp ./test_expected/test.bmp || {
+            echo "Ошибка: полученное изображение отличается от эталонного!"
+            exit 1
+          }
+          echo "Успех: водяной знак наложен корректно!"
+
+      - name: Upload result artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-output-bmp
+          path: ./test_output/test.bmp

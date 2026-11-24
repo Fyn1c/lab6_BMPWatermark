@@ -43,3 +43,6 @@
 # CMake build directories
 /build/
 /cmake-build-*/
+
+run_test.sh
+test_output/
